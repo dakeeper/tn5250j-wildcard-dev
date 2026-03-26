@@ -138,6 +138,30 @@ This fork supports wildcard characters in device names:
 
 GPL-2.0
 
+## Security
+
+This fork has been reviewed for security concerns. The code is a legitimate 5250 terminal emulator for IBM i (AS/400).
+
+### Security Findings
+
+| Area | Status | Notes |
+|------|--------|-------|
+| External Commands | OK | Only for browser launch and STRPCCMD (legitimate IBM i function) |
+| Network/Sockets | OK | SSL/TLS for secure IBM i connections |
+| Password Handling | OK | Passwords stored in memory only, not hardcoded |
+| SQL Injection | OK | JDBC uses parameterized queries |
+| File Operations | OK | Only for configuration and export |
+| Wildcard Feature | OK | Generates only random A-Z characters |
+
+### External Exec Usage
+
+The code contains legitimate uses of `Runtime.exec()`:
+- **Browser launch**: Opens URLs in system default browser
+- **STRPCCMD**: IBM i remote command execution (server-initiated)
+- **Spool Export**: Currently commented out
+
+This is standard Java functionality used by many applications.
+
 This project was created because there was no terminal emulator for Linux with features like continued edit fields, gui windows, cursor progression fields, etc.
 
 It was then open sourced to give something back to all those hackers and code churners that work so hard to provide the Linux and Open Source communities with quality work and software.
