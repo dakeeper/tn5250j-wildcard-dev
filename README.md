@@ -75,6 +75,35 @@ java -jar build/tn5250j.jar
 java -jar dist/tn5250j-0.8.0-beta2-run/tn5250j.jar
 ```
 
+## Configuration
+
+Configuration files are stored in `~/.tn5250j` (Linux/macOS) or `%USERPROFILE%\.tn5250j` (Windows).
+
+### Configuration Files
+
+| File | Description |
+|------|-------------|
+| `sessions.properties` | Session configurations (host, device name, etc.) |
+| `macros.properties` | Macro definitions |
+| `keymap.properties` | Custom key mappings |
+| `TN5250JDefaults.props` | Default settings |
+
+### Custom Settings Directory
+
+You can specify a custom settings directory:
+
+```bash
+java -Duser.home=/path/to/settings -jar build/tn5250j.jar
+# or
+java -Demulator.settingsDirectory=/path/to/settings -jar build/tn5250j.jar
+```
+
+### Wildcard Device Names
+
+This fork supports wildcard characters in device names:
+- Use `*` or `=` as placeholder for random A-Z character
+- Example: `AA999BB*` becomes `AA999BBA`, `AA999BBB`, etc. (random per connection)
+
 ## Supported Platforms
 
 - Linux
