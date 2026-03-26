@@ -88,9 +88,32 @@ Configuration files are stored in `~/.tn5250j` (Linux/macOS) or `%USERPROFILE%\.
 | `keymap.properties` | Custom key mappings |
 | `TN5250JDefaults.props` | Default settings |
 
-### Custom Settings Directory
+### Custom Key Mappings
 
-You can specify a custom settings directory:
+Edit `keymap.properties` in `~/.tn5250j`:
+
+```properties
+# Example: Change Enter to Right Ctrl key
+Enter=10,true,false,false,false
+
+# Key codes:
+# 0=Unassigned    9=TAB        10=Enter     27=Escape
+# 37=Left Arrow   38=Up Arrow   39=Right Arrow 40=Down Arrow
+# 12=Clear        33=F1        34=F2        ... 48=F12
+# 127=Delete      155=Insert   157=Right Ctrl
+# 150=Right Shift 151=Right Alt 152=Right GUI
+```
+
+### Macro Definitions
+
+Edit `macros.properties` in `~/.tn5250j`:
+
+```properties
+# Example: Create a macro to type "CALL MYPROGRAM"
+mac.1=type(CALL MYPROGRAM\r)
+```
+
+### Custom Settings Directory
 
 ```bash
 java -Duser.home=/path/to/settings -jar build/tn5250j.jar
