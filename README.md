@@ -4,7 +4,7 @@ A 5250 terminal emulator for the IBM i (AS/400) written in Java.
 
 This fork adds wildcard support for device names:
 - Use `*` or `=` in device name as placeholder for random A-Z character
-- Example: `HU650LM*` becomes `HU650LMA`, `HU650LMB`, etc. (random)
+- Example: `AA999BB*` becomes `AA999BBA`, `AA999BBB`, etc. (random)
 
 Documentation is available at: [tn5250j.github.io](https://tn5250j.github.io/)
 
