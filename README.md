@@ -10,14 +10,14 @@ Documentation is available at: [tn5250j.github.io](https://tn5250j.github.io/)
 
 [![Build Status](https://travis-ci.org/tn5250j/tn5250j.svg?branch=travis)](https://travis-ci.org/tn5250j/tn5250j)
 
-## Build from Source
+## Installation
 
 ### Prerequisites
 
-- Java JDK 8 or higher
-- Apache Ant
+- Java JDK 8 or higher (JRE only is not sufficient for building)
+- ~500MB disk space for dependencies
 
-### Build Steps
+### Option 1: Build with Ant (Recommended)
 
 ```bash
 # Clone the repository
@@ -27,11 +27,43 @@ cd tn5250j-wildcard-dev
 # Build the project
 ant compile package
 
-# Create distribution with dependencies
+# Create distribution with all dependencies
 ant dist-run-prepare
 ```
 
-### Running
+### Option 2: Build without Ant (Manual Compilation)
+
+```bash
+# Clone the repository
+git clone https://github.com/dakeeper/tn5250j-wildcard-dev.git
+cd tn5250j-wildcard-dev
+
+# Create build directory
+mkdir -p build
+
+# Compile Java sources
+javac -d build -source 1.8 -target 1.8 \
+  -cp "lib/runtime/*" \
+  -sourcepath src $(find src -name "*.java")
+
+# Create JAR file
+cd build
+jar cvfe tn5250j.jar org.tn5250j.My5250 $(find . -name "*.class")
+cd ..
+
+# Run the application
+java -jar build/tn5250j.jar
+```
+
+### Option 3: Pre-built Download
+
+Download the latest release JAR from the releases page and run:
+
+```bash
+java -jar tn5250j.jar
+```
+
+## Running
 
 After building, run the application:
 
@@ -43,7 +75,16 @@ java -jar build/tn5250j.jar
 java -jar dist/tn5250j-0.8.0-beta2-run/tn5250j.jar
 ```
 
-## History
+## Supported Platforms
+
+- Linux
+- macOS
+- Windows
+- Any platform with Java 8+
+
+## License
+
+GPL-2.0
 
 This project was created because there was no terminal emulator for Linux with features like continued edit fields, gui windows, cursor progression fields, etc.
 
